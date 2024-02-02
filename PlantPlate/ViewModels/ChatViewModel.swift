@@ -64,6 +64,8 @@ class ChatViewModel: ObservableObject {
                                     DispatchQueue.main.async {
                                         self.generatedText = content
                                     }
+                                } else {
+                                    print("not serializing")
                                 }
                 
             } catch {
