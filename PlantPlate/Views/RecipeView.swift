@@ -12,28 +12,29 @@ struct RecipeView: View {
     @Binding var presentSheet: Bool
     @Binding var selectedTime: Time
     @Binding var dishStyle: DishStyle
+    @Binding var title: DishStyle
     @Binding var value: Int
     @Binding var ingredient: String
     
-    @State var recipeBody: String
+    @Binding var recipeBody: String
     
     var body: some View {
-        ScrollView {
+        
             HStack {
-                Text("Your Meal")
+                Text(recipeTitle(title))
                     .font(.title)
                     .bold()
                 Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "speaker.wave.2.fill")
-                        .foregroundStyle(Color("ButtonColor"))
-                        .font(.largeTitle)
-                })
-                .accessibilityLabel(Text("Hands-free Button"))
-                .accessibilityHint(Text("This will read out the recipe to the user so that they can go hands free or if they are preoccupied with another task."))
-                .accessibilityAddTraits(.isButton)
+//                Button(action: {
+//                    
+//                }, label: {
+//                    Image(systemName: "speaker.wave.2.fill")
+//                        .foregroundStyle(Color("ButtonColor"))
+//                        .font(.largeTitle)
+//                })
+//                .accessibilityLabel(Text("Hands-free Button"))
+//                .accessibilityHint(Text("This will read out the recipe to the user so that they can go hands free or if they are preoccupied with another task."))
+//                .accessibilityAddTraits(.isButton)
                 
             }
             .padding()
@@ -42,7 +43,7 @@ struct RecipeView: View {
             ScrollView {
                 Text(recipeBody)
                 if recipeBody.isEmpty {
-                    Text("Ooogaboogabooga")
+                    ProgressView()
                 }
             }
                 .padding()
@@ -60,9 +61,9 @@ struct RecipeView: View {
             .accessibilityAddTraits(.isButton)
         }
     }
-}
+
 
 #Preview {
-    RecipeView(presentSheet: .constant(false), selectedTime: .constant(.supriseMe), dishStyle: .constant(.breakfast), value: .constant(1), ingredient: .constant("Lettuce"), recipeBody: "Yes Chef, Here is your Recipe")
+    RecipeView(presentSheet: .constant(false), selectedTime: .constant(.supriseMe), dishStyle: .constant(.breakfast), title: .constant(.dinner), value: .constant(1), ingredient: .constant("Lettuce"), recipeBody: .constant("Yes Chef, Here is your Recipe"))
 }
 
