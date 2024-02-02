@@ -11,6 +11,7 @@ struct PreferenceView: View {
     // Mutable Variables on Plant Plate Screen
     @State private var selectedTime: Time = .supriseMe
     @State private var dishStyle: DishStyle = .dinner
+    @State private var title: DishStyle = .dinner
     @State private var value = 1
     @State private var ingredient = ""
     @State private var presentSheet = false
@@ -35,26 +36,46 @@ struct PreferenceView: View {
                         .padding(.horizontal)
                         .accessibilityLabel(Text("Serving size adjustment"))
                         .accessibilityHint(Text("Changes the serving size of the recipe."))
-                    
-                    TextField("Add Ingredients", text: $ingredient)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color.gray.opacity(0.1)))
-                        .padding()
-                        .accessibilityLabel(Text("Add Ingrediants"))
-                        .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
-                    Spacer()
-                    Button(action: {
-                        if ingredient.isEmpty {
-                            showIngredientAlert = true
-                        } else {
-                            presentSheet.toggle()
-                            viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
-                            print(ingredient)
-                        }
-                    }, label: {
-                        ButtonView(text: "Generate Recipe")
+                
+                TextField("Add Ingredients", text: $ingredient)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.gray.opacity(0.1)))
+                    .padding()
+                    .accessibilityLabel(Text("Add Ingrediants"))
+                    .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
+                Spacer()
+                Button(action: {
+                    if ingredient.isEmpty {
+                        showIngredientAlert = true
+                    } else {
+                        presentSheet.toggle()
+                        viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
+                        print(ingredient)
+                    }
+                }, label: {
+                    ButtonView(text: "Generate Recipe")
+                })
+                .buttonStyle(.automatic)
+                .accessibility(label: Text("Generate Recipe Button"))
+                .accessibility(hint: Text("Tap to generate your vegan recipe based on your inputs."))
+                .accessibility(addTraits: .isButton)
+                .alert(isPresented: $showIngredientAlert) {
+                                    Alert(
+                                        title: Text("Error"),
+                                        message: Text("Please enter an ingredient"),
+                                        dismissButton: .default(Text("OK"))
+                                    )
+                                }
+                .sheet(
+                    isPresented: $presentSheet,
+                    content: {
+                        RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, title: $title, value: $value, ingredient: $ingredient, recipeBody: $viewModel.generatedText)
+                            .interactiveDismissDisabled()
+//                        ScrollView {
+//                            Text("\(viewModel.generatedText)")
+//                        }
                     })
                     .buttonStyle(.automatic)
                     .accessibility(label: Text("Generate Recipe Button"))
@@ -67,15 +88,6 @@ struct PreferenceView: View {
                             dismissButton: .default(Text("OK"))
                         )
                     }
-                    .sheet(
-                        isPresented: $presentSheet,
-                        content: {
-                            RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, value: $value, ingredient: $ingredient, recipeBody: "\(viewModel.generatedText)")
-                                .interactiveDismissDisabled()
-                            //                        ScrollView {
-                            //                            Text("\(viewModel.generatedText)")
-                            //                        }
-                        })
                     .navigationTitle("Plant Plate")
                     // .accessibilityLabel(Text("Main Screen Title"))
                     .toolbar {
