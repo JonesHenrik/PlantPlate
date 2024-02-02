@@ -30,7 +30,6 @@ struct PreferenceView: View {
             VStack {
                 VStack {
                     PickerView()
-                   // ServingSizePicker(servingSize: .constant(1))
                     StepperView(value: $value)
                 }
                 .padding(.horizontal)
@@ -43,7 +42,7 @@ struct PreferenceView: View {
                 Spacer()
                 Button(action: {
                     presentSheet.toggle()
-                  //  viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
+                    viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
                     print(ingredient)
                 }, label: {
                     ButtonView(text: "Generate Recipe")
