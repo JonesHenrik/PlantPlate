@@ -18,6 +18,9 @@ struct FilterView: View {
             List {
                 VStack {
                     Toggle("Gluten-Free", isOn: $isGlutenFree)
+                        .accessibilityAddTraits(.isToggle)
+                        .accessibilityLabel(Text("Gluten-Free Toggle"))
+                        .accessibilityHint(Text("If you are gluten-free, this will modify the recipe into a gluten-free recipe."))
                     Divider()
                     HStack {
                         Text("Preferred Diet")
@@ -35,6 +38,8 @@ struct FilterView: View {
                         
                     }
                     .pickerStyle(.automatic)
+                    .accessibilityLabel(Text("Preferred Diet"))
+                    .accessibilityHint(Text("If you follow a specific vegan diet, this will modify the recipe that will follow that diet as well."))
                     Divider()
                     HStack {
                         Text("Please list your allergies below:")
@@ -46,7 +51,8 @@ struct FilterView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 15)
                                 .fill(Color.gray.opacity(0.1)))
-                    
+                        .accessibilityLabel(Text("Add Allergies and Intolorences"))
+                        .accessibilityHint(Text("Enter any allergies or intolorences you may have. The recipe will be modified to fit your needs."))
                 }
                 .padding(.horizontal)
                 .navigationTitle("Preferences")
@@ -58,6 +64,9 @@ struct FilterView: View {
                         // Fails contrast test in Dark Mode
                         .foregroundStyle(Color("ButtonColor"))
                         .buttonStyle(.automatic)
+                        .accessibility(label: Text("Save Button"))
+                        .accessibility(hint: Text("Saving will retain your inputs and allow you to return to the generate screen"))
+                        .accessibilityAddTraits(.isButton)
                     }
                 }
             }

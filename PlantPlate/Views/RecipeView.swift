@@ -15,7 +15,7 @@ struct RecipeView: View {
     @Binding var value: Int
     @Binding var ingredient: String
     
-    var recipeBody: String
+    @State var recipeBody: String
     
     var body: some View {
         ScrollView {
@@ -31,6 +31,9 @@ struct RecipeView: View {
                         .foregroundStyle(Color("ButtonColor"))
                         .font(.largeTitle)
                 })
+                .accessibilityLabel(Text("Hands-free Button"))
+                .accessibilityHint(Text("This will read out the recipe to the user so that they can go hands free or if they are preoccupied with another task."))
+                .accessibilityAddTraits(.isButton)
                 
             }
             .padding()
@@ -38,6 +41,9 @@ struct RecipeView: View {
                 .padding(.horizontal)
             ScrollView {
                 Text(recipeBody)
+                if recipeBody.isEmpty {
+                    Text("Ooogaboogabooga")
+                }
             }
                 .padding()
             Button(action: {
@@ -49,6 +55,9 @@ struct RecipeView: View {
             }, label: {
                 ButtonView(text: "Complete")
             })
+            .accessibilityLabel(Text("Completed Button"))
+            .accessibilityHint(Text("This will allow you to exit the recipe and return you to the generation screen when done."))
+            .accessibilityAddTraits(.isButton)
         }
     }
 }
