@@ -42,6 +42,8 @@ struct PreferenceView: View {
                         RoundedRectangle(cornerRadius: 15)
                             .fill(Color.gray.opacity(0.1)))
                     .padding()
+                    .accessibilityLabel(Text("Add Ingrediants"))
+                    .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
                 Spacer()
                 Button(action: {
                     if ingredient.isEmpty {
@@ -68,14 +70,14 @@ struct PreferenceView: View {
                 .sheet(
                     isPresented: $presentSheet,
                     content: {
-                       // RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, value: $value, ingredient: $ingredient, recipeBody: "\(viewModel.generatedText)")
-                        // .interactiveDismissDisabled()
-                        ScrollView {
-                            Text("\(viewModel.generatedText)")
-                        }
+                        RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, value: $value, ingredient: $ingredient, recipeBody: "\(viewModel.generatedText)")
+                         .interactiveDismissDisabled()
+//                        ScrollView {
+//                            Text("\(viewModel.generatedText)")
+//                        }
                     })
                 .navigationTitle("Plant Plate")
-                //.accessibilityLabel(Text("Main Screen Title"))
+                // .accessibilityLabel(Text("Main Screen Title"))
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
