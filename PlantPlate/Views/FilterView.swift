@@ -57,6 +57,7 @@ struct FilterView: View {
                         }
                         // Fails contrast test in Dark Mode
                         .foregroundStyle(Color("ButtonColor"))
+                        .buttonStyle(.automatic)
                     }
                 }
             }

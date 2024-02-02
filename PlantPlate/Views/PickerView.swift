@@ -25,6 +25,8 @@ struct PickerView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
+                    .accessibilityLabel(Text("Length of Recipe"))
+                    .accessibilityHint(Text("Adjusts the time it will take to prepare the recipe"))
 
                     Text("Dish Style")
                         .font(.headline)
@@ -37,6 +39,8 @@ struct PickerView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
+                    .accessibilityLabel(Text("Type of Dish"))
+                    .accessibilityHint(Text("Adjusts the dish type for the recipe. This includes breakfast, lunch, dinner, or a snack."))
                 }
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.1)))
