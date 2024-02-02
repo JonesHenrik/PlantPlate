@@ -88,3 +88,12 @@ func glutenFree(_ noBread: Bool) -> String {
 func serving(_ servingSize: Int) -> String {
     "I am serving \(servingSize) amount of people. "
 }
+
+func recipeTitle(_ title: DishStyle) -> String {
+    switch title {
+    case .breakfast: "Breakfast is served"
+    case .lunch: "Lunch is served"
+    case .dinner: "Dinner is served"
+    case .snack: "Snack time"
+    }
+}

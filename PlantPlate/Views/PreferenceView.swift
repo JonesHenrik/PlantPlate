@@ -11,6 +11,7 @@ struct PreferenceView: View {
     // Mutable Variables on Plant Plate Screen
     @State private var selectedTime: Time = .supriseMe
     @State private var dishStyle: DishStyle = .dinner
+    @State private var title: DishStyle = .dinner
     @State private var value = 1
     @State private var ingredient = ""
     @State private var presentSheet = false
@@ -27,10 +28,10 @@ struct PreferenceView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+                VStack {
                     PickerView()
                         .padding(.horizontal)
-                        // VoiceOver can be found in PickerView
+                    // VoiceOver can be found in PickerView
                     StepperView(value: $value)
                         .padding(.horizontal)
                         .accessibilityLabel(Text("Serving size adjustment"))
@@ -70,34 +71,45 @@ struct PreferenceView: View {
                 .sheet(
                     isPresented: $presentSheet,
                     content: {
-                        RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, value: $value, ingredient: $ingredient, recipeBody: "\(viewModel.generatedText)")
-                         .interactiveDismissDisabled()
+                        RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, title: $title, value: $value, ingredient: $ingredient, recipeBody: $viewModel.generatedText)
+                            .interactiveDismissDisabled()
 //                        ScrollView {
 //                            Text("\(viewModel.generatedText)")
 //                        }
                     })
-                .navigationTitle("Plant Plate")
-                // .accessibilityLabel(Text("Main Screen Title"))
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {
-                            presentFilterSheet.toggle()
-                        }) {
-                            FilterButtonView()
-                        }
-                        .sheet(isPresented: $presentFilterSheet) {
-                            FilterView(allergy: $allergy, isGlutenFree: $isGlutenFree, dietType: $dietType, presentFilterSheet: $presentFilterSheet)
-                                .interactiveDismissDisabled()
-                        }
-                       
+                    .buttonStyle(.automatic)
+                    .accessibility(label: Text("Generate Recipe Button"))
+                    .accessibility(hint: Text("Tap to generate your vegan recipe based on your inputs."))
+                    .accessibility(addTraits: .isButton)
+                    .alert(isPresented: $showIngredientAlert) {
+                        Alert(
+                            title: Text("Error"),
+                            message: Text("Please enter an ingredient"),
+                            dismissButton: .default(Text("OK"))
+                        )
                     }
+                    .navigationTitle("Plant Plate")
+                    // .accessibilityLabel(Text("Main Screen Title"))
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button(action: {
+                                presentFilterSheet.toggle()
+                            }) {
+                                FilterButtonView()
+                            }
+                            .sheet(isPresented: $presentFilterSheet) {
+                                FilterView(allergy: $allergy, isGlutenFree: $isGlutenFree, dietType: $dietType, presentFilterSheet: $presentFilterSheet)
+                                    .interactiveDismissDisabled()
+                            }
+                            
+                        }
+                    }
+                    .buttonStyle(.automatic)
+                    .accessibility(label: Text("Filter/Preferences Button"))
+                    .accessibility(hint: Text("Tap to change your preferences. This will include whether you are gluten free, follow a specific vegan diet, or have any allergies/other dietary restrictions."))
+                    .accessibility(addTraits: .isButton)
+                    Spacer()
                 }
-                .buttonStyle(.automatic)
-                .accessibility(label: Text("Filter/Preferences Button"))
-                .accessibility(hint: Text("Tap to change your preferences. This will include whether you are gluten free, follow a specific vegan diet, or have any allergies/other dietary restrictions."))
-                .accessibility(addTraits: .isButton)
-                Spacer()
-            }
         }
     }
 }
