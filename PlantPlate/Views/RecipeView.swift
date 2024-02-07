@@ -51,8 +51,6 @@ struct RecipeView: View {
                 presentSheet.toggle()
                 ingredient = ""
                 value = 1
-                selectedTime = .supriseMe
-                dishStyle = .breakfast
             }, label: {
                 ButtonView(text: "Complete")
             })

@@ -26,25 +26,35 @@ struct PreferenceView: View {
     
     // Accessibility Functionality
     
+    // Keyboard Dismiss
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         NavigationStack {
-                VStack {
-                    PickerView()
-                        .padding(.horizontal)
-                    // VoiceOver can be found in PickerView
-                    StepperView(value: $value)
-                        .padding(.horizontal)
-                        .accessibilityLabel(Text("Serving size adjustment"))
-                        .accessibilityHint(Text("Changes the serving size of the recipe."))
-                
-                TextField("Add Ingredients", text: $ingredient)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.gray.opacity(0.1)))
-                    .padding()
-                    .accessibilityLabel(Text("Add Ingrediants"))
-                    .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
+            VStack {
+                PickerView()
+                    .padding(.horizontal)
+                // VoiceOver can be found in PickerView
+                StepperView(value: $value)
+                    .padding(.horizontal)
+                    .accessibilityLabel(Text("Serving size adjustment"))
+                    .accessibilityHint(Text("Changes the serving size of the recipe."))
+                ZStack(alignment: .trailing) {
+                    TextField("Add Ingredients", text: $ingredient)
+                        .focused($isFocused)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color.gray.opacity(0.1)))
+                        .padding()
+                        .accessibilityLabel(Text("Add Ingrediants"))
+                        .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
+                    Button("Done") {
+                        isFocused = false
+                    }
+                    .padding(.trailing, 30)
+                    .foregroundStyle(Color("ButtonColor"))
+                }
                 Spacer()
                 Button(action: {
                     if ingredient.isEmpty {
@@ -62,54 +72,54 @@ struct PreferenceView: View {
                 .accessibility(hint: Text("Tap to generate your vegan recipe based on your inputs."))
                 .accessibility(addTraits: .isButton)
                 .alert(isPresented: $showIngredientAlert) {
-                                    Alert(
-                                        title: Text("Error"),
-                                        message: Text("Please enter an ingredient"),
-                                        dismissButton: .default(Text("OK"))
-                                    )
-                                }
+                    Alert(
+                        title: Text("Error"),
+                        message: Text("Please enter an ingredient"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
                 .sheet(
                     isPresented: $presentSheet,
                     content: {
                         RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, title: $title, value: $value, ingredient: $ingredient, recipeBody: $viewModel.generatedText)
                             .interactiveDismissDisabled()
-//                        ScrollView {
-//                            Text("\(viewModel.generatedText)")
-//                        }
+                        //                        ScrollView {
+                        //                            Text("\(viewModel.generatedText)")
+                        //                        }
                     })
-                    .buttonStyle(.automatic)
-                    .accessibility(label: Text("Generate Recipe Button"))
-                    .accessibility(hint: Text("Tap to generate your vegan recipe based on your inputs."))
-                    .accessibility(addTraits: .isButton)
-                    .alert(isPresented: $showIngredientAlert) {
-                        Alert(
-                            title: Text("Error"),
-                            message: Text("Please enter an ingredient"),
-                            dismissButton: .default(Text("OK"))
-                        )
-                    }
-                    .navigationTitle("Plant Plate")
-                    // .accessibilityLabel(Text("Main Screen Title"))
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button(action: {
-                                presentFilterSheet.toggle()
-                            }) {
-                                FilterButtonView()
-                            }
-                            .sheet(isPresented: $presentFilterSheet) {
-                                FilterView(allergy: $allergy, isGlutenFree: $isGlutenFree, dietType: $dietType, presentFilterSheet: $presentFilterSheet)
-                                    .interactiveDismissDisabled()
-                            }
-                            
-                        }
-                    }
-                    .buttonStyle(.automatic)
-                    .accessibility(label: Text("Filter/Preferences Button"))
-                    .accessibility(hint: Text("Tap to change your preferences. This will include whether you are gluten free, follow a specific vegan diet, or have any allergies/other dietary restrictions."))
-                    .accessibility(addTraits: .isButton)
-                    Spacer()
+                .buttonStyle(.automatic)
+                .accessibility(label: Text("Generate Recipe Button"))
+                .accessibility(hint: Text("Tap to generate your vegan recipe based on your inputs."))
+                .accessibility(addTraits: .isButton)
+                .alert(isPresented: $showIngredientAlert) {
+                    Alert(
+                        title: Text("Error"),
+                        message: Text("Please enter an ingredient"),
+                        dismissButton: .default(Text("OK"))
+                    )
                 }
+                .navigationTitle("Plant Plate")
+                // .accessibilityLabel(Text("Main Screen Title"))
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            presentFilterSheet.toggle()
+                        }) {
+                            FilterButtonView()
+                        }
+                        .sheet(isPresented: $presentFilterSheet) {
+                            FilterView(allergy: $allergy, isGlutenFree: $isGlutenFree, dietType: $dietType, presentFilterSheet: $presentFilterSheet)
+                                .interactiveDismissDisabled()
+                        }
+                        
+                    }
+                }
+                .buttonStyle(.automatic)
+                .accessibility(label: Text("Filter/Preferences Button"))
+                .accessibility(hint: Text("Tap to change your preferences. This will include whether you are gluten free, follow a specific vegan diet, or have any allergies/other dietary restrictions."))
+                .accessibility(addTraits: .isButton)
+                Spacer()
+            }
         }
     }
 }
