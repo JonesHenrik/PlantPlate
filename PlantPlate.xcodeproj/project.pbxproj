@@ -20,6 +20,7 @@
 		58AA4CB52B6C65E8008076C0 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB42B6C65E8008076C0 /* RecipeView.swift */; };
 		58AA4CB72B6C6609008076C0 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB62B6C6609008076C0 /* ChatViewModel.swift */; };
 		58AA4CB92B6C6622008076C0 /* PreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB82B6C6622008076C0 /* PreferenceModel.swift */; };
+		58F80F742B7401DB00849F0F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80F732B7401DB00849F0F /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		58AA4CB42B6C65E8008076C0 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		58AA4CB62B6C6609008076C0 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		58AA4CB82B6C6622008076C0 /* PreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceModel.swift; sourceTree = "<group>"; };
+		58F80F732B7401DB00849F0F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				58AA4CB02B6C65B4008076C0 /* PickerView.swift */,
 				58AA4CB22B6C65CD008076C0 /* ButtonView.swift */,
 				58AA4CB42B6C65E8008076C0 /* RecipeView.swift */,
+				58F80F732B7401DB00849F0F /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				58AA4CAF2B6C6596008076C0 /* FilterView.swift in Sources */,
 				581C2A422B6D2E7F008457D6 /* Secrets.swift in Sources */,
 				58AA4CA12B6C651F008076C0 /* ContentView.swift in Sources */,
+				58F80F742B7401DB00849F0F /* LoadingView.swift in Sources */,
 				58AA4CB72B6C6609008076C0 /* ChatViewModel.swift in Sources */,
 				58AA4CB32B6C65CD008076C0 /* ButtonView.swift in Sources */,
 				58AA4CB52B6C65E8008076C0 /* RecipeView.swift in Sources */,
