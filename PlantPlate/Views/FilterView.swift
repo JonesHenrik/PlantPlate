@@ -14,8 +14,30 @@ struct FilterView: View {
     @Binding var presentFilterSheet: Bool
     
     var body: some View {
-        NavigationStack {
-            List {
+        ZStack {
+            Color.background.ignoresSafeArea()
+            VStack {
+                HStack {
+                    Text("Preferences")
+                        .font(.custom("Magica", size: 30, relativeTo: .title))
+                        .foregroundStyle(Color("titleColor"))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top)
+                        .padding(.trailing)
+                        .padding(.trailing)
+                    
+                    Button("Save") {
+                        presentFilterSheet.toggle()
+                    }
+                    
+                    .foregroundStyle(Color("ButtonColor"))
+                    .buttonStyle(.automatic)
+                    .accessibility(label: Text("Save Button"))
+                    .accessibility(hint: Text("Saving will retain your inputs and allow you to return to the generate screen"))
+                    .accessibilityAddTraits(.isButton)
+                }
+                .padding(.horizontal)
+                Spacer()
                 VStack {
                     Toggle("Gluten-Free", isOn: $isGlutenFree)
                         .accessibilityAddTraits(.isToggle)
@@ -55,24 +77,18 @@ struct FilterView: View {
                         .accessibilityHint(Text("Enter any allergies or intolorences you may have. The recipe will be modified to fit your needs."))
                 }
                 .padding(.horizontal)
-                .navigationTitle("Preferences")
-                .toolbar {
-                    ToolbarItem {
-                        Button("Save") {
-                            presentFilterSheet.toggle()
-                        }
-                        // Fails contrast test in Dark Mode
-                        .foregroundStyle(Color("ButtonColor"))
-                        .buttonStyle(.automatic)
-                        .accessibility(label: Text("Save Button"))
-                        .accessibility(hint: Text("Saving will retain your inputs and allow you to return to the generate screen"))
-                        .accessibilityAddTraits(.isButton)
-                    }
-                }
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
             }
-            .scrollDisabled(true)
+            }
+            
         }
-    }
 }
 
 #Preview {

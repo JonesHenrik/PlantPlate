@@ -19,46 +19,44 @@ struct RecipeView: View {
     @Binding var recipeBody: String
     
     var body: some View {
-        
-            HStack {
-                Text(recipeTitle(title))
-                    .font(.title)
-                    .bold()
-                Spacer()
-//                Button(action: {
-//                    
-//                }, label: {
-//                    Image(systemName: "speaker.wave.2.fill")
-//                        .foregroundStyle(Color("ButtonColor"))
-//                        .font(.largeTitle)
-//                })
-//                .accessibilityLabel(Text("Hands-free Button"))
-//                .accessibilityHint(Text("This will read out the recipe to the user so that they can go hands free or if they are preoccupied with another task."))
-//                .accessibilityAddTraits(.isButton)
-                
-            }
-            .padding()
-            Divider()
-                .padding(.horizontal)
-            ScrollView {
-                Text(recipeBody)
-                if recipeBody.isEmpty {
-                    ProgressView()
+        if recipeBody.isEmpty {
+            LoadingView()
+        } else {
+            ZStack {
+                Color.background.ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Text("Your Plant Plate")
+                            .font(.custom("Magica", size: 18, relativeTo: .title))
+                            .bold()
+                            .foregroundStyle(Color("titleColor"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                    }
+                    .padding()
+                    Spacer()
+                    Divider()
+                        .padding(.horizontal)
+                    ScrollView {
+                        Text(recipeBody)
+                    }
+                    .padding()
+                    Button(action: {
+                        presentSheet.toggle()
+                        ingredient = ""
+                        value = 1
+                        recipeBody = ""
+                    }, label: {
+                        ButtonView(text: "Complete")
+                    })
+                    .accessibilityLabel(Text("Completed Button"))
+                    .accessibilityHint(Text("This will allow you to exit the recipe and return you to the generation screen when done."))
+                    .accessibilityAddTraits(.isButton)
                 }
             }
-                .padding()
-            Button(action: {
-                presentSheet.toggle()
-                ingredient = ""
-                value = 1
-            }, label: {
-                ButtonView(text: "Complete")
-            })
-            .accessibilityLabel(Text("Completed Button"))
-            .accessibilityHint(Text("This will allow you to exit the recipe and return you to the generation screen when done."))
-            .accessibilityAddTraits(.isButton)
         }
     }
+}
 
 
 #Preview {
