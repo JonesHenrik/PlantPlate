@@ -15,7 +15,8 @@ struct PickerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
                     Text("Preferred Time")
-                        .font(.headline)
+                        .font(.custom("Magica", size: 15, relativeTo: .headline))
+                        .foregroundStyle(.title)
 
                     Picker("", selection: $selectedTime) {
                         Text("No limit").tag(Time.supriseMe)
@@ -29,8 +30,9 @@ struct PickerView: View {
                     .accessibilityHint(Text("Adjusts the time it will take to prepare the recipe"))
 
                     Text("Dish Style")
-                        .font(.headline)
-
+                        .font(.custom("Magica", size: 15, relativeTo: .headline))
+                        .foregroundStyle(.title)
+            
                     Picker("", selection: $dishStyle) {
                         Text("Breakfast").tag(DishStyle.breakfast)
                         Text("Lunch").tag(DishStyle.lunch)
