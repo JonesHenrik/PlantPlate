@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		581C2A422B6D2E7F008457D6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C2A412B6D2E7F008457D6 /* Secrets.swift */; };
+		584259402B73E37A006074CE /* Magica.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5842593F2B73E37A006074CE /* Magica.otf */; };
 		58AA4C9F2B6C651F008076C0 /* PlantPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4C9E2B6C651F008076C0 /* PlantPlateApp.swift */; };
 		58AA4CA12B6C651F008076C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CA02B6C651F008076C0 /* ContentView.swift */; };
 		58AA4CA32B6C6520008076C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58AA4CA22B6C6520008076C0 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		581C2A412B6D2E7F008457D6 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		5842593E2B73E343006074CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5842593F2B73E37A006074CE /* Magica.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Magica.otf; sourceTree = "<group>"; };
 		58AA4C9B2B6C651F008076C0 /* PlantPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AA4C9E2B6C651F008076C0 /* PlantPlateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPlateApp.swift; sourceTree = "<group>"; };
 		58AA4CA02B6C651F008076C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,12 +70,14 @@
 		58AA4C9D2B6C651F008076C0 /* PlantPlate */ = {
 			isa = PBXGroup;
 			children = (
+				5842593E2B73E343006074CE /* Info.plist */,
 				58AA4C9E2B6C651F008076C0 /* PlantPlateApp.swift */,
 				58AA4CBA2B6C667E008076C0 /* Views */,
 				58AA4CBB2B6C66A5008076C0 /* ViewModels */,
 				58AA4CBC2B6C66B4008076C0 /* Models */,
 				58AA4CC12B6C6DE1008076C0 /* Secrets */,
 				58AA4CA22B6C6520008076C0 /* Assets.xcassets */,
+				5842593F2B73E37A006074CE /* Magica.otf */,
 				58AA4CA42B6C6520008076C0 /* Preview Content */,
 			);
 			path = PlantPlate;
@@ -183,6 +188,7 @@
 			files = (
 				58AA4CA62B6C6520008076C0 /* Preview Assets.xcassets in Resources */,
 				58AA4CA32B6C6520008076C0 /* Assets.xcassets in Resources */,
+				584259402B73E37A006074CE /* Magica.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +345,7 @@
 				DEVELOPMENT_TEAM = 8K6C7ZB947;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlantPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -368,6 +375,7 @@
 				DEVELOPMENT_TEAM = 8K6C7ZB947;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlantPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

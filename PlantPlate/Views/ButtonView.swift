@@ -13,8 +13,8 @@ struct ButtonView: View {
     // Main Button
     var body: some View {
         Text(text)
-                        .font(.headline)
-                        .foregroundColor(.white)
+            .font(.custom("Magica", size: 15, relativeTo: .headline))
+                        .foregroundColor(.background)
                         .padding()
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .background(LinearGradient(
