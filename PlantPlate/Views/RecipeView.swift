@@ -46,6 +46,7 @@ struct RecipeView: View {
                         ingredient = ""
                         value = 1
                         recipeBody = ""
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }, label: {
                         ButtonView(text: "Complete")
                     })

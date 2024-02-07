@@ -42,6 +42,8 @@ struct LoadingView: View {
                         .font(.custom("Magica", size: 32))
                         .foregroundStyle(Color("titleColor"))
                         .scaleEffect(scale)
+                        .accessibilityLabel(Text("Loading"))
+                        .accessibilityHint(Text("Your recipe is being generated"))
                     
                     //calling animation
                         .onAppear {

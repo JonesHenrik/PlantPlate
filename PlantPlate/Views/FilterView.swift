@@ -28,6 +28,7 @@ struct FilterView: View {
                     
                     Button("Save") {
                         presentFilterSheet.toggle()
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }
                     
                     .foregroundStyle(Color("ButtonColor"))

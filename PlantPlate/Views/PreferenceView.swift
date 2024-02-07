@@ -28,7 +28,7 @@ struct PreferenceView: View {
     
     // Keyboard Dismiss
     @FocusState private var isFocused: Bool
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -71,6 +71,7 @@ struct PreferenceView: View {
                             presentSheet.toggle()
                             viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
                             print(ingredient)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         }
                     }, label: {
                         ButtonView(text: "Generate Recipe")
@@ -91,9 +92,6 @@ struct PreferenceView: View {
                         content: {
                             RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, title: $title, value: $value, ingredient: $ingredient, recipeBody: $viewModel.generatedText)
                                 .interactiveDismissDisabled()
-                            //                        ScrollView {
-                            //                            Text("\(viewModel.generatedText)")
-                            //                        }
                         })
                     .buttonStyle(.automatic)
                     .accessibility(label: Text("Generate Recipe Button"))
@@ -112,6 +110,7 @@ struct PreferenceView: View {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button(action: {
                                 presentFilterSheet.toggle()
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             }) {
                                 FilterButtonView()
                             }
