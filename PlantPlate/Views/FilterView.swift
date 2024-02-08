@@ -18,10 +18,7 @@ struct FilterView: View {
             Color.background.ignoresSafeArea()
             VStack {
                 HStack {
-                    Text("Preferences")
-                        .font(.custom("Magica", size: 30, relativeTo: .title))
-                        .foregroundStyle(Color("titleColor"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TitleView(text: "Preferences")
                         .padding(.top)
                         .padding(.trailing)
                         .padding(.trailing)

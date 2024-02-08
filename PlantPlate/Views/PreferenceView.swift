@@ -35,11 +35,10 @@ struct PreferenceView: View {
             ZStack {
                 Color.background.ignoresSafeArea()
                 VStack {
-                    Text("Cooking Today?")
-                        .font(.custom("Magica", size: 30, relativeTo: .title))
-                        .foregroundStyle(Color("titleColor"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TitleView(text: "Cooking Today?")
+                        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                         .padding()
+
                     PickerView()
                     //.background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.1)))
                         .padding(.horizontal)

@@ -20,6 +20,7 @@
 		58AA4CB52B6C65E8008076C0 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB42B6C65E8008076C0 /* RecipeView.swift */; };
 		58AA4CB72B6C6609008076C0 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB62B6C6609008076C0 /* ChatViewModel.swift */; };
 		58AA4CB92B6C6622008076C0 /* PreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA4CB82B6C6622008076C0 /* PreferenceModel.swift */; };
+		58ADBD542B75645D0041B9A5 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADBD532B75645D0041B9A5 /* TitleView.swift */; };
 		58F80F742B7401DB00849F0F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80F732B7401DB00849F0F /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		58AA4CB42B6C65E8008076C0 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		58AA4CB62B6C6609008076C0 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		58AA4CB82B6C6622008076C0 /* PreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceModel.swift; sourceTree = "<group>"; };
+		58ADBD532B75645D0041B9A5 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		58F80F732B7401DB00849F0F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				58AA4CAC2B6C6573008076C0 /* PreferenceView.swift */,
 				58AA4CAE2B6C6596008076C0 /* FilterView.swift */,
 				58AA4CB02B6C65B4008076C0 /* PickerView.swift */,
+				58ADBD532B75645D0041B9A5 /* TitleView.swift */,
 				58AA4CB22B6C65CD008076C0 /* ButtonView.swift */,
 				58AA4CB42B6C65E8008076C0 /* RecipeView.swift */,
 				58F80F732B7401DB00849F0F /* LoadingView.swift */,
@@ -213,6 +216,7 @@
 				58AA4CB12B6C65B4008076C0 /* PickerView.swift in Sources */,
 				58AA4CB92B6C6622008076C0 /* PreferenceModel.swift in Sources */,
 				58AA4CAD2B6C6573008076C0 /* PreferenceView.swift in Sources */,
+				58ADBD542B75645D0041B9A5 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
