@@ -46,9 +46,11 @@ struct RecipeView: View {
                         ingredient = ""
                         value = 1
                         recipeBody = ""
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }, label: {
                         ButtonView(text: "Complete")
                     })
+                    .buttonStyle(.automatic)
                     .accessibilityLabel(Text("Completed Button"))
                     .accessibilityHint(Text("This will allow you to exit the recipe and return you to the generation screen when done."))
                     .accessibilityAddTraits(.isButton)

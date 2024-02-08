@@ -18,19 +18,16 @@ struct FilterView: View {
             Color.background.ignoresSafeArea()
             VStack {
                 HStack {
-                    Text("Preferences")
-                        .font(.custom("Magica", size: 30, relativeTo: .title))
-                        .foregroundStyle(Color("titleColor"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TitleView(text: "Preferences")
                         .padding(.top)
                         .padding(.trailing)
                         .padding(.trailing)
                     
                     Button("Save") {
                         presentFilterSheet.toggle()
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }
-                    
-                    .foregroundStyle(Color("ButtonColor"))
+                    .foregroundStyle(Color("secondaryButton"))
                     .buttonStyle(.automatic)
                     .accessibility(label: Text("Save Button"))
                     .accessibility(hint: Text("Saving will retain your inputs and allow you to return to the generate screen"))

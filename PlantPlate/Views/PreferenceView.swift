@@ -24,21 +24,21 @@ struct PreferenceView: View {
     @State public var isGlutenFree = false
     @State public var dietType: DietType = .none
     
-    // Accessibility Functionality
+    // Haptic Feedback
+    @State private var alertHaptic = false
     
     // Keyboard Dismiss
     @FocusState private var isFocused: Bool
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
                 VStack {
-                    Text("Cooking Today?")
-                        .font(.custom("Magica", size: 30, relativeTo: .title))
-                        .foregroundStyle(Color("titleColor"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TitleView(text: "Cooking Today?")
+                        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                         .padding()
+
                     PickerView()
                     //.background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.1)))
                         .padding(.horizontal)
@@ -47,30 +47,34 @@ struct PreferenceView: View {
                         .padding(.horizontal)
                         .accessibilityLabel(Text("Serving size adjustment"))
                         .accessibilityHint(Text("Changes the serving size of the recipe."))
-                    ZStack(alignment: .trailing) {
-                        TextField("Add Ingredients", text: $ingredient)
-                            .focused($isFocused)
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.gray.opacity(0.1)))
-                            .padding()
-                            .accessibilityLabel(Text("Add Ingrediants"))
-                            .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
-                        Button("Done") {
-                            isFocused = false
+                        ZStack(alignment: .trailing) {
+                            TextField("Add Ingredients", text: $ingredient)
+                                .focused($isFocused)
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(Color.gray.opacity(0.1)))
+                                .padding()
+                                .accessibilityLabel(Text("Add Ingrediants"))
+                                .accessibilityHint(Text("Enter the ingredients you currently possess to generate a recipe."))
+                            Button("Done") {
+                                isFocused = false
+                            }
+                            .padding(.trailing, 30)
+                            .foregroundStyle(Color("secondaryButton"))
+                            .accessibilityLabel(Text("Done"))
+                            .accessibilityLabel(Text("Press when finished entering your ingredients. Will close your keyboard."))
                         }
-                        .padding(.trailing, 30)
-                        .foregroundStyle(Color("ButtonColor"))
-                    }
                     Spacer()
                     Button(action: {
                         if ingredient.isEmpty {
                             showIngredientAlert = true
+                            alertHaptic = true
                         } else {
                             presentSheet.toggle()
                             viewModel.sendChatGPTRequest(prompt: masterPrompt + ingredient + dishStyleSelection(dishStyle) + timeSelection(selectedTime) + allergens(allergy) + glutenFree(isGlutenFree) + diet(dietType) + serving(value), apiKey: Secrets.apiKey)
                             print(ingredient)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         }
                     }, label: {
                         ButtonView(text: "Generate Recipe")
@@ -86,14 +90,12 @@ struct PreferenceView: View {
                             dismissButton: .default(Text("OK"))
                         )
                     }
+                    .sensoryFeedback(.warning, trigger: alertHaptic)
                     .sheet(
                         isPresented: $presentSheet,
                         content: {
                             RecipeView(presentSheet: $presentSheet, selectedTime: $selectedTime, dishStyle: $dishStyle, title: $title, value: $value, ingredient: $ingredient, recipeBody: $viewModel.generatedText)
                                 .interactiveDismissDisabled()
-                            //                        ScrollView {
-                            //                            Text("\(viewModel.generatedText)")
-                            //                        }
                         })
                     .buttonStyle(.automatic)
                     .accessibility(label: Text("Generate Recipe Button"))
@@ -112,6 +114,7 @@ struct PreferenceView: View {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button(action: {
                                 presentFilterSheet.toggle()
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             }) {
                                 FilterButtonView()
                             }
