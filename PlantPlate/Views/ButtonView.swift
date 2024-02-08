@@ -14,7 +14,7 @@ struct ButtonView: View {
     var body: some View {
         Text(text)
             .font(.custom("Magica", size: 15, relativeTo: .headline))
-                        .foregroundColor(.background)
+                        .foregroundColor(Color("buttonText"))
                         .padding()
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .background(LinearGradient(
@@ -59,7 +59,7 @@ struct FilterButtonView: View {
     var body: some View {
         Image(systemName: "slider.horizontal.3")
             .imageScale(.large)
-            .foregroundStyle(Color("ButtonColor"))
+            .foregroundStyle(Color("secondaryButton"))
     }
 }
 

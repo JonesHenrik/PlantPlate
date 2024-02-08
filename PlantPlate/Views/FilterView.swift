@@ -30,8 +30,7 @@ struct FilterView: View {
                         presentFilterSheet.toggle()
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }
-                    
-                    .foregroundStyle(Color("ButtonColor"))
+                    .foregroundStyle(Color("secondaryButton"))
                     .buttonStyle(.automatic)
                     .accessibility(label: Text("Save Button"))
                     .accessibility(hint: Text("Saving will retain your inputs and allow you to return to the generate screen"))
