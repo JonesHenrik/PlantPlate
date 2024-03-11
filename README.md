@@ -38,7 +38,9 @@ By leveraging the ChatGPT API, we successfully collected users' preferences and 
 | :-------- | :------- | :------------------------- |
 | `messages` | `array` | **Required**. Array of message objects for conversation history |
 
-Refer to the [OpenAI API documentation](https://platform.openai.com/docs/introduction) for information on rate limits and guidelines. For support, contact OpenAI at support@openai.com
+Refer to the [OpenAI API documentation](https://platform.openai.com/docs/introduction) for information on rate limits and guidelines. 
+
+For support, contact OpenAI at support@openai.com
 
 
 ## Lessons Learned
