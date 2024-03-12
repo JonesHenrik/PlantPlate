@@ -47,13 +47,15 @@ For support, contact OpenAI at support@openai.com
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 
-Can definetly talk about the use of MVVM
+PlantPlate offered us the opportunity to hone our skills in MVVM architecture. Through dedicated practice and hands-on development, we've cultivated a better understanding of structuring code following the MVVM pattern. This methodology emphasizes the importance of maintaining clear boundaries between the View, Models/Data, and ViewModels, fostering a cohesive and maintainable codebase.
 
-*Insert Photo*
+![toolbar](https://github.com/JonesHenrik/PlantPlate/blob/main/toolbar.png)
 
-Can also talk about the use of @State
+This project allowed us to delve into the effective use of @State variables within the SwiftUI framework. Elevating our proficiency in leveraging @State for dynamic UI updates and state management.
 
-*Insert Photo*
+One notable application of @State in our project was its pivotal role in handling user input. By incorporating @State variables strategically, we enabled users to actively participate in shaping their experience. This not only facilitated dynamic alterations to the user interface but also allowed users to influence the prompt, tailoring it to their specific needs and preferences.
+
+![@State](https://github.com/JonesHenrik/PlantPlate/blob/main/%40StateEditor.png)
 
 
 ## Acknowledgements
