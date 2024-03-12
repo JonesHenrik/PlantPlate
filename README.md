@@ -77,6 +77,12 @@ I would like to thank my team (names below) for all of the hard work everyone pr
 [Documentation](https://developer.apple.com/documentation/swift)
 
 
-## Demo
+## Screenshots
 
-*Insert video demo here*
+![First](https://github.com/JonesHenrik/PlantPlate/blob/main/IMG_1764.PNG)
+
+![Second](https://github.com/JonesHenrik/PlantPlate/blob/main/IMG_1765.PNG)
+
+![Third](https://github.com/JonesHenrik/PlantPlate/blob/main/IMG_1766.PNG)
+
+![Fourth](https://github.com/JonesHenrik/PlantPlate/blob/main/IMG_1767.PNG)
