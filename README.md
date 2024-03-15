@@ -1,6 +1,6 @@
 # PlantPlate
 
-PlantPlate, is an app designed to help vegan users craft interesting and creative meals based on the ingredients they have at home.
+PlantPlate is an app designed to help vegan users craft interesting and creative meals based on the ingredients they have at home.
 
 ## Background
 
